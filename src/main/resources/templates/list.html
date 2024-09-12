@@ -9,11 +9,15 @@
     <link href="/main.css" rel="stylesheet">
 </head>
 <body>
+<div th:replace="~{nav.html :: navbar}"></div>
 <div class="card" th:each="item : ${items}">
-    <img src="https://placehold.co/300">
+    <a th:href="@{/api/item/{id}(id=${item.id})}">
+        <img src="https://placehold.co/300">
+    </a>
     <div>
         <h4 th:text="${item.title}">바지</h4>
-        <p  th:text="${item.price}">7억</p>
+        <p  th:text="${item.price} + '원'">7억</p>
+        <a  th:href="@{/api/item/edit/{id}(id=${item.id})}">✏️</a>
     </div>
 </div>
 </body>
