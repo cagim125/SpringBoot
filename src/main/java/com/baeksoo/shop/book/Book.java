@@ -1,6 +1,7 @@
 package com.baeksoo.shop.book;
 
 
+import com.baeksoo.shop.category.Category;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
