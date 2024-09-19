@@ -1,7 +1,7 @@
 body {
   box-sizing: border-box;
   margin: 0;
-  background-color: #eee;
+  background-color: white;
 }
 
 .container {
@@ -20,11 +20,25 @@ body {
   height: 100%;
 }
 
-.row li {
+li {
   list-style: none;
   border-radius: 5px;
-  background-color: #e0dbdb;
 
   padding: 2px 5px;
   margin-bottom: 3px;
+
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+li:nth-child(even) {
+  background-color: #b8b3b3;
+}
+
+li:nth-child(odd) {
+  background-color: #daecda;
 }
