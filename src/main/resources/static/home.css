@@ -1,0 +1,114 @@
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.books_wrap {
+  width: 100%;
+  height: 3000px;
+  background-color: #eee;
+}
+
+.view_wrap {
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+}
+
+.header__above,
+.header__center,
+.header__below {
+  max-width: 1020px; /* 가운데 정렬될 최대 너비를 지정 */
+  width: 100%; /* 각 요소가 부모의 너비를 따르도록 설정 */
+  margin: 0 auto; /* 가로 방향에서 가운데 정렬 */
+  margin-bottom: 16px;
+  padding: 5px;
+}
+
+.header__above {
+  border-bottom: 1px solid gainsboro;
+}
+
+.header__above .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__center {
+  max-width: 820px;
+}
+.header__center .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.header__center .inner input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  outline: none;
+}
+.is-fixed{
+  position: fixed;
+  transform: translateX(25%);
+  z-index: 5;
+}
+.header__below .inner {
+  text-align: center;
+}
+
+
+.link {
+  color: #80888A;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.header__logo {
+  background-color: white;
+}
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  width: 500vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transform: all 1s;
+}
+
+
+/* 왼쪽 화살표 */
+.arrow-left {
+  position: absolute;
+  left: 10px; /* 화면 왼쪽에서 10px 떨어지도록 */
+  top: 55%; /* 세로 방향 가운데에 배치 */
+  transform: translateY(-50%); /* 정확하게 가운데 맞춤 */
+  font-size: 48px; /* 화살표 크기 */
+  cursor: pointer;
+}
+
+/* 오른쪽 화살표 */
+.arrow-right {
+  position: absolute;
+  right: 10px; /* 화면 오른쪽에서 10px 떨어지도록 */
+  top: 55%; /* 세로 방향 가운데에 배치 */
+  transform: translateY(-50%); /* 정확하게 가운데 맞춤 */
+  font-size: 48px; /* 화살표 크기 */
+  cursor: pointer;
+}

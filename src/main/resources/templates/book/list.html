@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>BookList</title>
+	  <link href="../../static/book.css" rel="stylesheet">
 		<link href="/book.css" rel="stylesheet">
-		<!-- <link href="../../static/book.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -15,9 +16,11 @@
 	<div class="container">
 		<ul class="row">
 			<li th:each="book : ${books}">
-					<p th:text="${book.title}">타이틀</p>
+				<h4 th:text="${book.title}">타이틀</h4>
+				<p>~~~</p>
+				<p th:text="${book.price}">가격</p>
+					<p th:text="${book.status}">도서대출가능여부</p>
 			</li>
-
 		</ul>
 	</div>
 </body>
