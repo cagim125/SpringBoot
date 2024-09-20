@@ -1,16 +1,43 @@
 package com.baeksoo.shop.home;
 
+import com.baeksoo.shop.exception.DuplicateMemberException;
+import com.baeksoo.shop.member.MemberReqDto;
+import com.baeksoo.shop.member.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/")
+@RequiredArgsConstructor
 public class HomeController {
 
-    @GetMapping("")
+    private final MemberService memberService;
+
+    @GetMapping("/")
     public String Home() {
-        return "Home";
+        return "home";
+    }
+
+    @GetMapping("/signUp")
+    public String signUpP() {
+        return "book/signUp";
+    }
+
+    @PostMapping("/signUp")
+    public String signUpProc(@ModelAttribute MemberReqDto request, Model model) {
+        try {
+            memberService.signUp(request);
+            return "redirect:/signIn";
+        } catch (DuplicateMemberException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "book/signUp";
+        }
+    }
+
+    @GetMapping("/signIn")
+    public String signInP() {
+        return "book/signIn";
     }
 
 }
