@@ -1,0 +1,58 @@
+:root {
+  --text-color: #80888A;
+  --text-color-white: #fff;
+  --font-size: 16px;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  color: #80888A;
+}
+.wrapper {
+  background: #eee;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.loginWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1000px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.loginWrap label {
+  width: 375px;
+  font-weight: bold;
+  text-align: left;
+}
+.loginWrap input {
+  width: 350px;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.loginWrap button {
+  width: 380px;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  background: black;
+  color: var(--text-color-white);
+  font-size: var(--font-size);
+}
+.register {
+  width: 350px;
+  text-align: right;
+}
+.register a {
+  text-decoration: none;
+  color: var(--text-color);
+}

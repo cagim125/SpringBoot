@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: #eee;
+}
+
+.signUp {
+  max-width: 1060px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+.duplication span {
+  cursor: pointer;
+  
+}
+
+form input {
+  width: 350px;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+}
+form button {
+  border: none;
+  border-radius: 8px;
+  background: black;
+  padding: 15px;
+  color: white;
+}
