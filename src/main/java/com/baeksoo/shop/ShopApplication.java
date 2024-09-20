@@ -1,6 +1,5 @@
 package com.baeksoo.shop;
 
-import com.baeksoo.shop.user.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
