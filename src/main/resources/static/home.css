@@ -1,3 +1,8 @@
+:root {
+  --text-color: #80888A;
+  --text-color-white: #fff;
+  --font-size: 16px;
+}
 
 body {
   box-sizing: border-box;
@@ -34,6 +39,7 @@ body {
 }
 
 .header__above {
+  background: #eee;
   border-bottom: 1px solid gainsboro;
 }
 
@@ -71,7 +77,6 @@ body {
   cursor: pointer;
 }
 
-
 .is-fixed{
   position: fixed;
   transform: translateX(25%);
@@ -80,7 +85,6 @@ body {
 .header__below .inner {
   text-align: center;
 }
-
 
 .link {
   color: #80888A;
@@ -100,32 +104,85 @@ body {
   justify-content: center;
 }
 
-.slide {
-  width: 500vw;
-  height: 100%;
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: #eee;
+}
+
+/* 로그인 시작 */
+.signWrap {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 24px;
-  transform: all 1s;
+  justify-content: flex-start;
+  max-width: 1280px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
 }
+.loginWrap label {
+  width: 375px;
+  font-weight: bold;
+  text-align: left;
+}
+.loginWrap input {
+  width: 350px;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.loginWrap button {
+  width: 380px;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  background: black;
+  color: var(--text-color-white);
+  font-size: var(--font-size);
+}
+.register {
+  width: 350px;
+  text-align: right;
+}
+.register a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+/* 로그인 끝 */
 
-
-/* 왼쪽 화살표 */
-.arrow-left {
-  position: absolute;
-  left: 10px; /* 화면 왼쪽에서 10px 떨어지도록 */
-  top: 55%; /* 세로 방향 가운데에 배치 */
-  transform: translateY(-50%); /* 정확하게 가운데 맞춤 */
-  font-size: 48px; /* 화살표 크기 */
+/* 회원가입 시작 */
+form {
+  display: flex;
+  flex-direction: column;
+}
+.duplication span {
   cursor: pointer;
+
 }
 
-/* 오른쪽 화살표 */
-.arrow-right {
-  position: absolute;
-  right: 10px; /* 화면 오른쪽에서 10px 떨어지도록 */
-  top: 55%; /* 세로 방향 가운데에 배치 */
-  transform: translateY(-50%); /* 정확하게 가운데 맞춤 */
-  font-size: 48px; /* 화살표 크기 */
-  cursor: pointer;
+form input {
+  width: 350px;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
 }
+form button {
+  border: none;
+  border-radius: 8px;
+  background: black;
+  padding: 15px;
+  color: white;
+}
+/* 회원가입 끝 */
+
+
+/* 마이페이지 시작 */
+.security span {
+  font-size: 22px;
+  font-weight: bold;
+}
+/* 마이페이지 끝 */
+
+
