@@ -4,6 +4,7 @@ import com.baeksoo.shop.exception.DuplicateMemberException;
 import com.baeksoo.shop.member.MemberReqDto;
 import com.baeksoo.shop.member.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,17 @@ public class HomeController {
     @GetMapping("/signIn")
     public String signInP() {
         return "book/signIn";
+    }
+
+    @GetMapping("/myPage")
+    public String myPageP(Authentication auth) {
+        if (auth != null) {
+            System.out.println(auth);
+            System.out.println(auth.getName()); //아이디출력가능
+            System.out.println(auth.isAuthenticated()); //로그인여부 검사가능
+        }
+
+        return "book/mypage";
     }
 
 }
