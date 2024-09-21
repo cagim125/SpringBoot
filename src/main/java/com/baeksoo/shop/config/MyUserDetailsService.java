@@ -26,10 +26,14 @@ public class MyUserDetailsService implements UserDetailsService {
         if (member.isEmpty()) {
             throw new UsernameNotFoundException("해당 아이디가 존재 하지 않음");
         }
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("일반유저"));
-
         var user = member.get();
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        if (user.getUsername().contains("admin")) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        } else {
+            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        }
 
         return new User(user.getUsername(), user.getPassword(), authorities);
     }
