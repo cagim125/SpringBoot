@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
 		<meta charset="UTF-8">
@@ -17,17 +17,7 @@
 <div class="books_wrap">
 		<div class="view_wrap">
 				<header id="header" class="header">
-						<div class="header__above">
-								<div class="inner">
-										<div class="inner__left">
-										</div>
-										<div class="inner_right">
-												<a class="link" href="/signIn">로그인</a>
-												<a class="link" href="/signUp">회원가입</a>
-												<a class="link">고객센터</a>
-										</div>
-								</div>
-						</div>
+						<div th:replace="~{book/nav.html :: navbar}"></div>
 						<div class="header__center">
 								<div class="inner">
 										<img class="header__logo" src="../static/images/book_icon.png" alt="logo"/>
