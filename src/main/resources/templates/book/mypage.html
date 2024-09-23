@@ -1,31 +1,51 @@
 <!doctype html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-		<meta charset="UTF-8">
-		<meta name="viewport"
-		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>MyPage</title>
-		<link rel="stylesheet" href="/home.css">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MyPage</title>
+	<link rel="stylesheet" href="/home.css">
+	<link rel="stylesheet" href="../../static/home.css">
 </head>
 <body>
-<h4>MyPage</h4>
+<div th:replace="~{book/nav.html :: navbar}"></div>
+<h2>MyPage</h2>
 <div class="security">
+	<div class="loan">
+		<h4>도서 대출 이력</h4>
+		<div class="book">
+			<img src="https://placehold.co/200x200" alt="book_img"/>
+			<div class="book_info">
+				<p>도서명</p>
+				<p>가격</p>
+				<p>수량</p>
+			</div>
+
+		</div>
+	</div>
+
+	<div sec:authorize="hasAuthority('ROLE_ADMIN')">
+		관리자는 도서 등록 가능
+	</div>
+	<div sec:authorize="hasAuthority('ROLE_USER')">
+		일반유저는 도서 등록 불가능
+	</div>
+	<div sec:authorize="isAuthenticated()">
 		<div>
-				<span sec:authentication="principal.username"></span>
+			<span sec:authentication="principal.username"></span>
 		</div>
 		<div>
-				<span sec:authentication="principal.authorities"></span>
+			<span sec:authentication="principal.authorities"></span>
 		</div>
 		<div>
-				<span sec:authorize="hasAuthority('일반유저')">일반유저 입니다</span>
+			<span sec:authorize="hasAuthority('ROLE_USER')">일반유저 입니다</span>
 		</div>
-		<div sec:authorize="hasAuthority('관리자')">
-				관리자만 도서 등록 가능
+		<div>
+			<span sec:authorize="hasAuthority('ROLE_ADMIN')">관리자 입니다</span>
 		</div>
-		<div sec:authorize="isAuthenticated()">
-				로그인된 사람만 보여주쇼
-		</div>
+	</div>
 </div>
 </body>
 </html>

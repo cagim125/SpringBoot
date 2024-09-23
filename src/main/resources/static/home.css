@@ -121,19 +121,19 @@ body {
   height: 100%;
   margin: 0 auto;
 }
-.loginWrap label {
+.signInForm label {
   width: 375px;
   font-weight: bold;
   text-align: left;
 }
-.loginWrap input {
+.signInForm input {
   width: 350px;
   padding: 15px;
   border: none;
   border-radius: 8px;
   margin-bottom: 15px;
 }
-.loginWrap button {
+.signInForm button {
   width: 380px;
   padding: 10px;
   border-radius: 8px;
@@ -141,6 +141,7 @@ body {
   background: black;
   color: var(--text-color-white);
   font-size: var(--font-size);
+  cursor: pointer;
 }
 .register {
   width: 350px;
@@ -149,6 +150,7 @@ body {
 .register a {
   text-decoration: none;
   color: var(--text-color);
+  font-weight: bold;
 }
 /* 로그인 끝 */
 
@@ -161,14 +163,19 @@ form {
   cursor: pointer;
 
 }
+.siginUpForm {
+  display: flex;
+  flex-direction: column;
+}
 
-form input {
+.siginUpForm input {
   width: 350px;
   padding: 15px;
   border: none;
   border-radius: 8px;
+  margin-bottom: 12px;
 }
-form button {
+.siginUpForm button {
   border: none;
   border-radius: 8px;
   background: black;
@@ -179,6 +186,41 @@ form button {
 
 
 /* 마이페이지 시작 */
+.security {
+  width: 100vw;
+  height: 100vh;
+}
+
+.loan {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background: salmon;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+}
+.book {
+  display: flex;
+  gap: 10px;
+}
+.book_info {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.book img {
+  width: 100%;
+  border-radius: 5px;
+}
+
 .security span {
   font-size: 22px;
   font-weight: bold;
