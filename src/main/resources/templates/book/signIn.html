@@ -19,15 +19,17 @@
 						<h4>아이디나 비번 틀림</h4>
 				</div>
 				<form action="/signIn" method="post">
-						<label for="username">ID</label>
-						<div>
-								<input id="username" name="username" type="text" placeholder="아이디"/>
+						<div class="signInForm">
+								<label for="username">ID</label>
+								<div>
+										<input id="username" name="username" type="text" placeholder="아이디"/>
+								</div>
+								<label for="password">PW</label>
+								<div>
+										<input id="password" name="password" type="password" placeholder="패스워드"/>
+								</div>
+								<button type="submit">로그인</button>
 						</div>
-						<label for="password">PW</label>
-						<div>
-								<input id="password" name="password" type="password" placeholder="패스워드"/>
-						</div>
-						<button type="submit" >로그인</button>
 				</form>
 
 				<div class="register">

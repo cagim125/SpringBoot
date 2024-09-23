@@ -18,10 +18,13 @@
 						<div th:if="${errorMessage}">
 								<h5 th:text="${errorMessage}" style="color:red;"></h5>
 						</div>
-						<input type="text" name="username" placeholder="username"/>
-						<input type="password" name="password" placeholder="password"/>
-						<input type="text" name="displayName" placeholder="displayName"/>
-						<button type="submit">회원가입</button>
+						<div class="siginUpForm">
+								<input type="text" name="username" placeholder="username"/>
+								<input type="password" name="password" placeholder="password"/>
+								<input type="text" name="displayName" placeholder="displayName"/>
+								<button type="submit">회원가입</button>
+						</div>
+
 				</form>
 		</div>
 </div>
