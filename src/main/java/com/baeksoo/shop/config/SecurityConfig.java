@@ -19,8 +19,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf) -> csrf.disable());
-        http.authorizeHttpRequests((authorize) ->
-                authorize.requestMatchers("/**").permitAll()
+        http.authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/admin/**").hasRole("ADMIN") // 관리자만 접근 허용
+                .anyRequest().permitAll() // 나머지는 모두 접근 가능
         );
         http.formLogin((formLogin) -> formLogin
                 .loginPage("/signIn")
