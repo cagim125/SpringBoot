@@ -11,4 +11,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(value = "SELECT * FROM book ORDER BY title LIMIT 100", nativeQuery = true)
     List<Book> findLimit100Book();
+
+    @Query(value = "SELECT * FROM book ORDER BY title LIMIT 30", nativeQuery = true)
+    List<Book> findLimit30Book();
 }
