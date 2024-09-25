@@ -259,12 +259,27 @@ form {
   padding: 15px;
   border: none;
   border-radius: 8px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
-.writeFrom button {
+.writeBtn {
   padding: 15px;
-  background: black;
   color: white;
+  background: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pl {
+  width: 200px;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 12px 13px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 /* write */

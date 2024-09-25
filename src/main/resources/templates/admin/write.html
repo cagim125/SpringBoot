@@ -7,17 +7,27 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>도서 등록</title>
 	<link rel="stylesheet" href="/home.css">
+	<link rel="stylesheet" href="../../static/home.css">
 </head>
 <body style="background-color: #eee;">
 <div th:replace="~{book/nav.html :: navbar}"></div>
 <div class="wrapper">
-	<h3>도서 등록</h3>
+	<h3 style="text-align: center;">도서 등록</h3>
 	<div class="writeForm">
-		<form>
+		<form th:action="@{/admin/write}" th:object="${requestDto}" method="post">
+			<select class="pl" name="categoryId">
+				<option value="">선택하세요</option>
+				<option value="1">외국소설</option>
+				<option value="2">한국소설</option>
+				<option value="3">인문</option>
+				<option value="4">요리</option>
+				<option value="5">건강</option>
+				<option value="6">자기계발</option>
+			</select>
 			<input name="title" placeholder="도서명"/>
 			<input name="author" placeholder="저자"/>
 			<input name="price" placeholder="가격"/>
-			<button type="submit">작성</button>
+			<button class="writeBtn" type="submit">작성</button>
 		</form>
 	</div>
 </div>
