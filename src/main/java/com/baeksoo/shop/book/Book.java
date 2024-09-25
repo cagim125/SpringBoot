@@ -3,14 +3,18 @@ package com.baeksoo.shop.book;
 
 import com.baeksoo.shop.category.Category;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Data
+
+
 @ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
 public class Book {
 
     @Id
