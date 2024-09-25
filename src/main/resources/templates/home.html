@@ -2,69 +2,91 @@
 <html lang="ko" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-		<meta charset="UTF-8">
-		<meta name="viewport"
-		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Home</title>
-		<link href="/home.css" rel="stylesheet">
-<!--		<link href="../static/home.css" rel="stylesheet">-->
-		<link rel="stylesheet"
-		      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Home</title>
+	<link href="/home.css" rel="stylesheet">
+	<link href="../static/home.css" rel="stylesheet">
+	<link rel="stylesheet"
+	      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </head>
 
 <body>
 <div class="books_wrap">
-		<div class="view_wrap">
-				<header id="header" class="header">
-						<div th:replace="~{book/nav.html :: navbar}"></div>
-						<div class="header__center">
-								<div class="inner">
-										<img class="header__logo" src="../static/images/book_icon.png" alt="logo"/>
-										<div class="search">
-												<input type="text" placeholder="이 페이지에 들어온게 우연일까? 필연일까?"/>
-												<span class="material-symbols-outlined">
+	<div class="view_wrap">
+		<header id="header" class="header">
+			<div th:replace="~{book/nav.html :: navbar}"></div>
+			<div class="header__center">
+				<div class="inner">
+					<div class="search">
+						<input type="text" placeholder="이 페이지에 들어온게 우연일까? 필연일까?"/>
+						<span class="material-symbols-outlined">
 													search
 												</span>
-										</div>
+					</div>
 
-								</div>
+				</div>
+			</div>
+			<div class="header__below">
+				<div class="inner">
+					<th:block th:each="book : ${books}">
+						<div>
+							<a th:href="@{/api/book/detail/{id}(id=${book.id})}">
+							<img src="https://placehold.co/80" alt="${book.image}">
+							</a>
+							<h4 th:text="${book.title}">바지</h4>
+							<p th:text="${book.price}">7억</p>
 						</div>
-						<div class="header__below">
-								<div class="inner">
-									<div th:each="book : ${books}">
-										<img src="https://placehold.co/80" alt="${book.image}" >
-										<h4 th:text="${book.title}">바지</h4>
-										<p th:text="${book.price}">7억</p>
-									</div>
-								</div>
-						</div>
-				</header>
-				<main class="content">
-				</main>
-		</div>
+					</th:block>
+				</div>
+				<div>
+					<ul class="pagination">
+						<!-- 이전 버튼 -->
+						<li th:if="${startPage > 1}">
+							<a th:href="@{/list/{page}(page=${startPage - 10})}">Previous</a>
+						</li>
+
+						<li th:each="i : ${#numbers.sequence(startPage, endPage)}"
+						    th:classappend="${i == currentPage} ? 'active'">
+								<a th:href="@{/list/{page}(page=${i})}" th:text="${i}"></a>
+							</li>
+
+						<!-- 다음 버튼 -->
+						<li th:if="${endPage < totalPage}">
+							<a th:href="@{/list/{page}(page=${startPage + 10})}">Next</a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</header>
+		<main class="content">
+		</main>
+	</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
         integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 <script>
-//		$('.arrow-left').on('click', () => {
-//			console.log('arrow-left clicked')
-//			$('.slide').css('transform', 'translateX(0vh)')
-//		})
-//		$('.arrow-right').on('click', () => {
-//			console.log('arrow-left clicked')
-//			$('.slide').css('transform', 'translateX(-200vh)')
-//		})
+	//		$('.arrow-left').on('click', () => {
+	//			console.log('arrow-left clicked')
+	//			$('.slide').css('transform', 'translateX(0vh)')
+	//		})
+	//		$('.arrow-right').on('click', () => {
+	//			console.log('arrow-left clicked')
+	//			$('.slide').css('transform', 'translateX(-200vh)')
+	//		})
 
-//		$(window).on('scroll', () =>{
-//			let scrollY = window.scrollY
-//			if (scrollY >= 400) {
-//				$('.header__center').addClass('is-fixed');
-//			} else if(scrollY <= 300) {
-//				$('.header__center').removeClass('is-fixed');
-//			}
-//		})
+	//		$(window).on('scroll', () =>{
+	//			let scrollY = window.scrollY
+	//			if (scrollY >= 400) {
+	//				$('.header__center').addClass('is-fixed');
+	//			} else if(scrollY <= 300) {
+	//				$('.header__center').removeClass('is-fixed');
+	//			}
+	//		})
 </script>
 </body>
 
