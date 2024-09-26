@@ -77,6 +77,9 @@ body {
   padding: 20px;
   margin-right: 5px;
 }
+.header__below .inner div a{
+  text-decoration: none;
+}
 /* 상픔 목록 보여주기 */
 
 .search {
@@ -111,6 +114,11 @@ body {
   color: #80888A;
   padding: 5px;
   font-size: 12px;
+}
+.admin__Role a {
+  text-decoration: none;
+  cursor: pointer;
+
 }
 
 /* 상픔 페이지 번호 */
@@ -324,3 +332,30 @@ form {
   width: 100%;
 }
 /* detail */
+/* edit */
+.editWrap {
+  max-width: 1060px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+}
+.editWrap input {
+  width: 650px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.editWrap button {
+  width: 670px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: black;
+  color: white;
+}
+/* edit */

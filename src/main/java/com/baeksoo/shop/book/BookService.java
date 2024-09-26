@@ -1,8 +1,10 @@
 package com.baeksoo.shop.book;
 
 import com.baeksoo.shop.admin.RequestDto;
+import com.baeksoo.shop.category.Category;
 import com.baeksoo.shop.category.CategoryRepository;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.NotFound;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,8 +28,25 @@ public class BookService {
        return bookRepository.findByIdOrderByDesc(PageRequest.of(page - 1, 20));
     }
 
-    public Book Detail(Long id) {
+    public Book getBook(Long id) {
         return bookRepository.findById(id).orElse(null);
+    }
+    public Book editBook(com.baeksoo.shop.book.RequestDto request) {
+        Category category = categoryRepository.findByName(request.getCategory()).orElse(null);
+
+        Book book = Book.builder()
+                .id(request.getId())
+                .title(request.getTitle())
+                .image(request.getImage())
+                .isbn(request.getIsbn())
+                .price(request.getPrice())
+                .author(request.getAuthor())
+                .status(Status.valueOf(request.getStatus()))
+                .category(category)
+                .build();
+
+       var result = bookRepository.save(book);
+       return result;
     }
 
     public void saveBook(RequestDto requestDto) {

@@ -3,11 +3,7 @@ package com.baeksoo.shop.book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.text.DecimalFormat;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,12 +22,23 @@ public class BookController {
 
     @GetMapping("/detail/{id}")
     public String detailP(@PathVariable Long id, Model model) {
-        Book result =  bookService.Detail(id);
-        DecimalFormat decimalFormat = new DecimalFormat("#,###");
-        String formatteredPrice = decimalFormat.format(result.getPrice());
+        Book result = bookService.getBook(id);
         model.addAttribute("book", result);
-        model.addAttribute("price", formatteredPrice);
         return "book/detail";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editP(@PathVariable Long id, Model model) {
+        Book result = bookService.getBook(id);
+        model.addAttribute("book", result);
+        return "book/edit";
+    }
+
+    @PostMapping("/edit")
+    public String editProc(@ModelAttribute RequestDto request, Model model) {
+        Book result = bookService.editBook(request);
+        model.addAttribute("book", result);
+        return "redirect:/api/book/edit/" + result.getId();
     }
 
 

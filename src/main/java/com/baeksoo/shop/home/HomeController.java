@@ -1,7 +1,6 @@
 package com.baeksoo.shop.home;
 
 import com.baeksoo.shop.book.Book;
-import com.baeksoo.shop.book.BookRepository;
 import com.baeksoo.shop.book.BookService;
 import com.baeksoo.shop.exception.DuplicateMemberException;
 import com.baeksoo.shop.member.MemberReqDto;

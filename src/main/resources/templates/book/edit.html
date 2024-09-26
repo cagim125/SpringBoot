@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>도서 수정 페이지</title>
+	<link href="../../static/home.css" rel="stylesheet">
+	<link rel="stylesheet" href="/home.css">
+
+</head>
+<body>
+<div class="wrapper">
+	<div th:replace="~{book/nav.html :: navbar}"></div>
+	<div class="editWrap">
+		<form th:action="@{/api/book/edit}" method="post">
+			<h4>수정</h4>
+			<label>ID</label>
+			<input name="id" th:value="${book.id}" readonly/>
+			<label>TITLE</label>
+			<input name="title" th:value="${book.title}" readonly />
+			<label>AUTHOR</label>
+			<input name="author" th:value="${book.author}" readonly />
+			<label>PRICE</label>
+			<input name="price" th:value="${book.price}"/>
+			<label>IMAGE</label>
+			<input name="image" th:value="${book.image}"/>
+			<label>ISBN</label>
+			<input name="isbn" th:value="${book.isbn}"/>
+			<label>STATUS</label>
+			<input name="status" th:value="${book.status}"/>
+			<th:block th:if="${book.category != null}">
+				<label>CATEGORY</label>
+				<input name="category" th:value="${book.category.name}"/>
+			</th:block>
+			<button type="submit">수정</button>
+		</form>
+	</div>
+</div>
+</body>
+</html>
