@@ -3,6 +3,7 @@ package com.baeksoo.shop.home;
 import com.baeksoo.shop.book.Book;
 import com.baeksoo.shop.book.BookService;
 import com.baeksoo.shop.exception.DuplicateMemberException;
+import com.baeksoo.shop.member.CustomUser;
 import com.baeksoo.shop.member.MemberReqDto;
 import com.baeksoo.shop.member.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -70,10 +71,9 @@ public class HomeController {
 
     @GetMapping("/myPage")
     public String myPageP(Authentication auth) {
+        var result = (CustomUser) auth.getPrincipal();
         if (auth != null) {
-            System.out.println(auth);
-            System.out.println(auth.getName()); //아이디출력가능
-            System.out.println(auth.isAuthenticated()); //로그인여부 검사가능
+            System.out.println(result.getDisplayName());
         }
 
         return "book/mypage";
