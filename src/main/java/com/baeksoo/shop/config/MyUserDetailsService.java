@@ -1,5 +1,6 @@
 package com.baeksoo.shop.config;
 
+import com.baeksoo.shop.member.CustomUser;
 import com.baeksoo.shop.member.MemberRepository;
 import com.baeksoo.shop.member.MemberReqDto;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +41,8 @@ public class MyUserDetailsService implements UserDetailsService {
         return customed;
     }
 
-        return new User(user.getUsername(), user.getPassword(), authorities);
-    }
-
 }
+
+
+
+
