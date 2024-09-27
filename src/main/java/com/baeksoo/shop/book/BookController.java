@@ -1,6 +1,7 @@
 package com.baeksoo.shop.book;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,13 @@ public class BookController {
         Book result = bookService.editBook(request);
         model.addAttribute("book", result);
         return "redirect:/api/book/edit/" + result.getId();
+    }
+
+    @DeleteMapping("/delete")
+    @ResponseBody
+    public ResponseEntity<String> deleteBook(@RequestParam Long id) {
+        bookService.deleteBook(id);
+        return ResponseEntity.status(200).body("Book deleted");
     }
 
 
