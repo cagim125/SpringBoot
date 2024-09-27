@@ -36,9 +36,19 @@
 							</a>
 							<h4 th:text="${book.title}">바지</h4>
 							<p th:text="${#numbers.formatInteger(book.price,3,'COMMA')} + '원'">7억</p>
-<!--							<div class="admin__Role" sec:authorize="hasAuthority('ROLE_ADMIN')">-->
-								<a th:href="@{/api/book/edit/{id}(id=${book.id})}">✏️</a>
-<!--							</div>-->
+							<!--							<div class="admin__Role" sec:authorize="hasAuthority('ROLE_ADMIN')">-->
+							<a th:href="@{/api/book/edit/{id}(id=${book.id})}">✏️</a>
+							<span th:onclick="
+							fetch('/api/book/delete?id=[[${book.id}]]', { method : 'DELETE' } )
+							.then(res => res.text())
+							.then(result => {
+								console.log(result);
+								if (result == 'Book deleted') {
+									window.location.reload();
+								}
+							})
+							">🗑️</span>
+							<!--							</div>-->
 						</div>
 					</th:block>
 				</div>
