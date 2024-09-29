@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>도서 검색</title>
+	<link rel="stylesheet" href="/home.css">
+	<link rel="stylesheet" href="../../static/home.css">
+</head>
+<body style="background:#eee">
+<div class="search__wrapper">
+	<div th:replace="~{book/nav.html :: navbar}"></div>
+	<div th:replace="~{book/nav-search.html :: navbar-search('keyword')}"></div>
+	<div id="item-list" >
+			<div class="book_info" th:each="book : ${books}">
+				<div class="book__info__left">
+					<div>
+						<img src="https://placehold.co/200" alt="${book.image}"/>
+					</div>
+					<div class="book__content">
+						<h4 th:text="${book.title}">타이틀</h4>
+						<h5 th:text="${#numbers.formatInteger(book.price,3,'COMMA')} + '원'">가격</h5>
+						<p th:text="${book.author}">작가</p>
+					</div>
+				</div>
+				<div class="book__info__right">
+					<button class="btn__cart">장바구니</button>
+					<button class="btn__loan">대출하기</button>
+				</div>
+			</div>
+	</div>
+	<!-- 더보기 버튼 -->
+	<div class="add__container">
+		<button id="load-more" th:if="${hasNext}">더보기</button>
+	</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(() => {
+		let page = /*[[${currentPage}]]*/ 0; // 현재 페이지
+		let keyword = /*[[${keyword}]]*/ ''; // 검색 키워드
+
+		function loadMoreBooks() {
+			$.ajax({
+				url: '/api/book/load-more',
+				type: 'GET',
+				data: {
+					keyword: keyword,
+					page: page
+				},
+				success: function(response) {
+					const books = response.books;
+					const hasNext = response.hasNext;
+
+					books.forEach(book => {
+						$('#item-list').append(`
+        <div class="book_info">
+            <div class="book__info__left">
+                <div>
+                    <img src="https://placehold.co/200" alt="${book.image}"/>
+                </div>
+                <div class="book__content">
+                    <h4>${book.title}</h4>
+                    <h5>${new Intl.NumberFormat('ko-KR').format(book.price)}원</h5>
+                    <p>${book.author}</p>
+                </div>
+            </div>
+            <div class="book__info__right">
+                <button class="btn__cart">장바구니</button>
+                <button class="btn__loan">대출하기</button>
+            </div>
+        </div>`);
+					})
+					// 다음 페이지가 있으면 더보기 버튼 표시, 없으면 숨김
+					if (hasNext) {
+						$('#load-more').show();
+					} else {
+						$('#load-more').hide();
+					}
+				}
+			});
+		}
+
+		// 더보기 버튼 클릭 시
+		$('#load-more').on('click', function() {
+			page++; // 다음 페이지로 이동
+			loadMoreBooks(); // 다음 페이지 데이터 로드
+		});
+	});
+</script>
+
+</body>
+</html>
