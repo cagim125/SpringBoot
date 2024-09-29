@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>NavSearch</title>
+	<link rel="stylesheet" href="/home.css">
+</head>
+<body>
+<div class="header__center" th:fragment="navbar-search('keyword')">
+	<div class="inner">
+		<form th:action="@{/api/book/search}" method="post">
+			<div class="search">
+				<input th:value="${keyword}" type="text" name="keyword" placeholder="이 페이지에 들어온게 우연일까? 필연일까?"/>
+				<button>
+					<span class="material-symbols-outlined">search</span>
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>
