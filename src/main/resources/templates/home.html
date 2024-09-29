@@ -18,15 +18,7 @@
 	<div class="view_wrap">
 		<header id="header" class="header">
 			<div th:replace="~{book/nav.html :: navbar}"></div>
-			<div class="header__center">
-				<div class="inner">
-					<div class="search">
-						<input type="text" placeholder="이 페이지에 들어온게 우연일까? 필연일까?"/>
-						<span class="material-symbols-outlined">search</span>
-					</div>
-
-				</div>
-			</div>
+			<div th:replace="~{book/nav-search.html :: navbar-search('keyword')}"></div>
 			<div class="header__below">
 				<div class="inner">
 					<th:block th:each="book : ${books}">
