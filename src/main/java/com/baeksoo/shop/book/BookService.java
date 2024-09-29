@@ -8,6 +8,7 @@ import org.hibernate.annotations.NotFound;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -67,6 +68,10 @@ public class BookService {
 
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
+    }
+
+    public Slice<Book> searchBook(String keyword, Pageable pageable) {
+        return bookRepository.findByTitleContains(keyword, pageable);
     }
 
 }
