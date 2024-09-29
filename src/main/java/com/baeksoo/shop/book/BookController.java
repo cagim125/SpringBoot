@@ -60,7 +60,7 @@ public class BookController {
     public String searchBook(@RequestParam String keyword,
                              @RequestParam(value = "page", defaultValue = "0") Integer page,
                              Model model) {
-        Pageable pageable = PageRequest.of(page, 10);
+        Pageable pageable = PageRequest.of(page, 20);
         var result = bookService.searchBook(keyword, pageable);
 
         System.out.println(keyword);
