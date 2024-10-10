@@ -26,7 +26,7 @@ public class BookService {
     }
 
     public Page<Book> findPage(Integer page) {
-       return bookRepository.findByIdOrderByDesc(PageRequest.of(page - 1, 20));
+       return bookRepository.findByIdOrderByDesc(PageRequest.of(page - 1, 14));
     }
 
     public Book getBook(Long id) {
