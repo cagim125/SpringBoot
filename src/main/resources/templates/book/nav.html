@@ -17,8 +17,8 @@
         <div class="inner_right">
             <!-- 로그인하지 않은 사용자에게 표시 -->
             <div sec:authorize="isAnonymous()">
-                <a class="link" href="/signIn">로그인</a>
-                <a class="link" href="/signUp">회원가입</a>
+                <a class="link" href="/api/user/signIn">로그인</a>
+                <a class="link" href="/api/user/signUp">회원가입</a>
                 <a class="link" href="/support">고객센터</a>
             </div>
 
@@ -26,7 +26,7 @@
             <div sec:authorize="isAuthenticated()">
                 <span sec:authentication="principal.displayName"></span>
                 <a class="link" href="/logout">로그아웃</a>
-                <a class="link" href="/myPage">마이페이지</a>
+                <a class="link" href="/api/user/myPage">마이페이지</a>
                 <a class="link" href="/support">고객센터</a>
             </div>
         </div>

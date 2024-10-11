@@ -29,4 +29,9 @@ public class MemberService {
     public Member getMember(Long id) {
         return memberRepository.findById(id).orElse(null);
     }
+
+    public Boolean existingUsername(String username) {
+        return memberRepository.existsByUsername(username);
+    }
+
 }

@@ -18,8 +18,6 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
-
-    private final MemberService memberService;
     private final BookService bookService;
 
     @GetMapping("/")
@@ -48,35 +46,6 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/signUp")
-    public String signUpP() {
-        return "book/signUp";
-    }
 
-    @PostMapping("/signUp")
-    public String signUpProc(@ModelAttribute MemberReqDto request, Model model) {
-        try {
-            memberService.signUp(request);
-            return "redirect:/signIn";
-        } catch (DuplicateMemberException e) {
-            model.addAttribute("errorMessage", e.getMessage());
-            return "book/signUp";
-        }
-    }
-
-    @GetMapping("/signIn")
-    public String signInP() {
-        return "book/signIn";
-    }
-
-    @GetMapping("/myPage")
-    public String myPageP(Authentication auth) {
-        var result = (CustomUser) auth.getPrincipal();
-        if (auth != null) {
-            System.out.println(result.getDisplayName());
-        }
-
-        return "book/mypage";
-    }
 
 }
