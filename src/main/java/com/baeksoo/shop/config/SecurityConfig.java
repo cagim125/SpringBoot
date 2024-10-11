@@ -24,7 +24,8 @@ public class SecurityConfig {
                 .anyRequest().permitAll() // 나머지는 모두 접근 가능
         );
         http.formLogin((formLogin) -> formLogin
-                .loginPage("/signIn")
+                .loginPage("/api/user/signIn")
+                .loginProcessingUrl("/signIn")
                 .defaultSuccessUrl("/")
         );
         http.logout( logout -> logout
